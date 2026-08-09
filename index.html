@@ -1,0 +1,1237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made By Adnan | Utility Web Hub</title>
+    
+    <!-- Modern Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-cream: #f9f6f0;
+            --panel-bg: #f2ebd9;
+            --panel-card: #e8dfc8;
+            --border-maroon: rgba(128, 0, 32, 0.25);
+            --border-solid: #800020;
+            --text-dark: #1a1a1a;
+            --text-muted: #5c5248;
+            --maroon-main: #800020;
+            --maroon-dark: #580016;
+            --maroon-light: #a31c3f;
+            --accent-gold: #c59b27;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            background-image: 
+                linear-gradient(to right, rgba(128,0,32,0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(128,0,32,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Top System Status Bar */
+        .system-bar {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--maroon-main);
+            border: 1px solid var(--border-solid);
+            background: var(--panel-bg);
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-weight: 700;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--maroon-main);
+            border-radius: 50%;
+            margin-right: 6px;
+            box-shadow: 0 0 6px var(--maroon-main);
+        }
+
+        /* Panel Styling */
+        .cyber-panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-solid);
+            padding: 30px;
+            margin-bottom: 24px;
+            position: relative;
+            box-shadow: 4px 4px 0px rgba(128, 0, 32, 0.15);
+        }
+
+        .cyber-panel::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 8px;
+            height: 8px;
+            border-top: 3px solid var(--maroon-main);
+            border-left: 3px solid var(--maroon-main);
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--maroon-main);
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            line-height: 1.1;
+            color: var(--maroon-main);
+        }
+
+        .hero-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            color: var(--maroon-light);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .hero-bio {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 24px;
+            max-width: 720px;
+        }
+
+        /* Counter Badges */
+        .interactive-counters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            font-family: var(--font-mono);
+        }
+
+        .counter-badge {
+            background: var(--panel-card);
+            border: 1px solid var(--border-solid);
+            padding: 8px 14px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            color: var(--maroon-main);
+            font-weight: 700;
+        }
+
+        .counter-badge:hover {
+            background: var(--maroon-main);
+            color: var(--bg-cream);
+        }
+
+        /* Social Links Grid */
+        .social-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-family: var(--font-mono);
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border: 1px solid var(--border-solid);
+            text-decoration: none;
+            font-size: 0.85rem;
+            color: var(--maroon-main);
+            background: var(--bg-cream);
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--maroon-main);
+            color: var(--bg-cream);
+        }
+
+        /* Section Headings */
+        h2.section-heading {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: var(--maroon-main);
+        }
+
+        /* Form Inputs & Buttons */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .app-input {
+            background: var(--bg-cream);
+            border: 1px solid var(--border-solid);
+            color: var(--text-dark);
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            padding: 10px 14px;
+            outline: none;
+            width: 100%;
+            font-weight: 600;
+        }
+
+        .app-input:focus {
+            border-color: var(--maroon-light);
+            box-shadow: 0 0 4px rgba(128, 0, 32, 0.3);
+        }
+
+        .btn-maroon {
+            background: var(--maroon-main);
+            color: var(--bg-cream);
+            border: 1px solid var(--maroon-dark);
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            text-decoration: none;
+        }
+
+        .btn-maroon:hover {
+            background: var(--maroon-dark);
+            color: var(--bg-cream);
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        /* Outputs */
+        .output-box {
+            border: 1px dashed var(--border-solid);
+            background: var(--bg-cream);
+            padding: 16px;
+            margin-top: 16px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .metric-cell {
+            border: 1px solid var(--border-maroon);
+            background: var(--panel-card);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .metric-val {
+            font-size: 1.1rem;
+            color: var(--maroon-main);
+            font-weight: 700;
+        }
+
+        .career-tag {
+            border: 1px solid var(--border-solid);
+            color: var(--maroon-main);
+            background: var(--bg-cream);
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        /* Calculator Styling */
+        .calc-box {
+            max-width: 300px;
+            margin: 16px 0 0 0;
+            border: 1px solid var(--border-solid);
+            padding: 16px;
+            background: var(--bg-cream);
+        }
+
+        .calc-disp {
+            width: 100%;
+            height: 45px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-solid);
+            color: var(--maroon-main);
+            font-family: var(--font-mono);
+            font-size: 1.3rem;
+            text-align: right;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            outline: none;
+            font-weight: 700;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            font-family: var(--font-mono);
+        }
+
+        .btn-calc {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-solid);
+            color: var(--text-dark);
+            font-size: 1rem;
+            padding: 12px 0;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .btn-calc:hover {
+            background: var(--maroon-main);
+            color: var(--bg-cream);
+        }
+
+        /* Calendar Utility */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            margin-top: 14px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .cal-head {
+            color: var(--maroon-main);
+            font-weight: 700;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border-solid);
+        }
+
+        .cal-day {
+            padding: 10px 0;
+            border: 1px solid var(--border-maroon);
+            background: var(--bg-cream);
+            font-weight: 600;
+        }
+
+        .cal-day.today {
+            border: 2px solid var(--border-solid);
+            color: var(--bg-cream);
+            font-weight: 700;
+            background: var(--maroon-main);
+        }
+
+        .cal-day.empty {
+            border: none;
+            background: transparent;
+        }
+
+        /* Camera Space */
+        .cam-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 14px;
+            align-items: flex-start;
+        }
+
+        video, canvas {
+            width: 100%;
+            max-width: 480px;
+            background: #000000;
+            border: 1px solid var(--border-solid);
+        }
+
+        /* History & Badges */
+        .history-list {
+            max-height: 160px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .history-row {
+            border: 1px solid var(--border-maroon);
+            background: var(--bg-cream);
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+
+        .badge {
+            border: 1px solid var(--border-solid);
+            color: var(--maroon-main);
+            background: var(--bg-cream);
+            padding: 6px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            display: inline-block;
+            margin: 0 6px 6px 0;
+            font-weight: 700;
+        }
+
+        /* Navigation Route Steps */
+        .route-step {
+            margin-bottom: 10px;
+            padding-left: 14px;
+            border-left: 3px solid var(--maroon-main);
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+        }
+
+        /* Question Cards */
+        .q-card {
+            border: 1px solid var(--border-solid);
+            background: var(--bg-cream);
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .q-title {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: var(--maroon-main);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .q-text {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .btn-answer {
+            background: var(--panel-card);
+            border: 1px solid var(--border-solid);
+            color: var(--maroon-main);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 700;
+        }
+
+        .btn-answer:hover {
+            background: var(--maroon-main);
+            color: var(--bg-cream);
+        }
+
+        .answer-box {
+            display: none;
+            margin-top: 12px;
+            padding: 12px;
+            background: #e3dac9;
+            border: 1px solid var(--maroon-main);
+            color: var(--text-dark);
+            font-family: var(--font-mono);
+            font-size: 0.88rem;
+        }
+
+        /* Footer */
+        footer {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-solid);
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        footer a {
+            color: var(--maroon-main);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- TOP SYSTEM STATUS BAR -->
+        <div class="system-bar">
+            <div><span class="status-dot"></span>MADE BY ADNAN // UTILITY WEB HUB</div>
+            <div>28°38′N 77°13′E // DELHI</div>
+            <div id="liveClock">00:00:00 IST</div>
+        </div>
+
+        <!-- HERO HEADER -->
+        <header class="cyber-panel">
+            <div class="section-tag">MADE BY ADNAN // DIGITAL UTILITIES</div>
+            <h1 class="hero-title">MADE BY ADNAN</h1>
+            <p class="hero-tagline">STEM Student (Delhi) | UI/UX Designer | Colorist | Frontend Developer</p>
+            <p class="hero-bio">
+                Welcome to my personal utility web hub. High-performance, functional web tools engineered with precision.
+            </p>
+
+            <div class="interactive-counters">
+                <div class="counter-badge" onclick="incrementCounter('likeCount')">
+                    [+] LIKES: <span id="likeCount">0</span>
+                </div>
+                <div class="counter-badge" onclick="incrementCounter('coffeeCount')">
+                    [+] COFFEE: <span id="coffeeCount">0</span>
+                </div>
+            </div>
+
+            <div class="social-grid">
+                <a href="https://github.com/really4adnan" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-github"></i> GITHUB
+                </a>
+                <a href="mailto:info.adnanakhtar001@gmail.com" class="social-btn">
+                    <i class="fa-solid fa-envelope"></i> GMAIL
+                </a>
+                <a href="https://www.linkedin.com/in/adnan-a-laskar-510661426/" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-linkedin"></i> LINKEDIN
+                </a>
+                <a href="https://instagram.com/wdym.adn4n/" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-instagram"></i> INSTAGRAM
+                </a>
+            </div>
+        </header>
+
+        <!-- §01 STUDENT PROFESSION FINDER -->
+        <section class="cyber-panel">
+            <div class="section-tag">§01 // CAREER ENGINE</div>
+            <h2 class="section-heading">Student Profession Finder</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Select academic parameters to generate a targeted skill roadmap and modern career match.
+            </p>
+
+            <div class="app-grid">
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">CLASS / GRADE</label>
+                    <select id="profClass" class="app-input">
+                        <option value="9-10">Class 9th - 10th</option>
+                        <option value="11-12" selected>Class 11th - 12th</option>
+                        <option value="college">College / Undergrad</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">STREAM</label>
+                    <select id="profStream" class="app-input">
+                        <option value="pcm">Science (PCM)</option>
+                        <option value="pcb">Science (PCB)</option>
+                        <option value="commerce">Commerce</option>
+                        <option value="arts">Arts / Design</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">PRIMARY HOBBY</label>
+                    <select id="profHobby" class="app-input">
+                        <option value="tech">Coding / Tech</option>
+                        <option value="design">Designing / Media</option>
+                        <option value="reading">Research / Writing</option>
+                        <option value="gaming">Gaming / Logic</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">PERSONALITY</label>
+                    <select id="profPersonality" class="app-input">
+                        <option value="analytical">Analytical</option>
+                        <option value="creative">Creative</option>
+                        <option value="social">Communicator</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn-maroon" onclick="findProfession()">
+                <i class="fa-solid fa-terminal"></i> RUN MATCHING ENGINE
+            </button>
+
+            <div id="profResult" class="output-box" style="display: none;">
+                <div style="color: var(--maroon-main); font-weight: 700; margin-bottom: 8px;">> MATCH RESULT FOUND</div>
+                <div id="profTags" style="margin-bottom: 12px;"></div>
+                <div><strong>Skills to Focus:</strong> <span id="profSkills" style="color: var(--text-muted);"></span></div>
+                <div style="margin-top: 6px;"><strong>Immediate Action Step:</strong> <span id="profAction" style="color: var(--text-muted);"></span></div>
+            </div>
+        </section>
+
+        <!-- §02 LIVE INDIA WEATHER & ADVISOR -->
+        <section class="cyber-panel">
+            <div class="section-tag">§02 // ENVIRONMENT MONITOR</div>
+            <h2 class="section-heading">India Weather & Wardrobe Monitor</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Fetches real-time meteorology metrics across Indian cities and computes clothing/hydration specs.
+            </p>
+
+            <div style="display: flex; gap: 10px; margin-top: 14px;">
+                <input type="text" id="cityInput" class="app-input" placeholder="Enter City (e.g., Delhi, Mumbai, Shillong)" onkeydown="if(event.key === 'Enter') fetchCityWeather()">
+                <button class="btn-maroon" style="margin-top:0;" onclick="fetchCityWeather()">FETCH DATA</button>
+            </div>
+
+            <div id="weatherDisplay" style="display: none;">
+                <div class="metric-row">
+                    <div class="metric-cell">
+                        <div style="font-size:0.75rem; color:var(--text-muted);">TEMP</div>
+                        <div class="metric-val" id="valTemp">-- °C</div>
+                    </div>
+                    <div class="metric-cell">
+                        <div style="font-size:0.75rem; color:var(--text-muted);">CLIMATE</div>
+                        <div class="metric-val" id="valCondition" style="font-size:0.9rem;">--</div>
+                    </div>
+                    <div class="metric-cell">
+                        <div style="font-size:0.75rem; color:var(--text-muted);">HUMIDITY</div>
+                        <div class="metric-val" id="valHumidity">-- %</div>
+                    </div>
+                    <div class="metric-cell">
+                        <div style="font-size:0.75rem; color:var(--text-muted);">WIND</div>
+                        <div class="metric-val" id="valWind">-- km/h</div>
+                    </div>
+                </div>
+
+                <div class="output-box">
+                    <div><strong style="color:var(--maroon-main);">Outfit Spec:</strong> <span id="recOutfit" style="color:var(--text-muted);"></span></div>
+                    <div style="margin-top:6px;"><strong style="color:var(--maroon-main);">Hydration Spec:</strong> <span id="recHydration" style="color:var(--text-muted);"></span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- §03 SEPARATED: BMI CALCULATOR -->
+        <section class="cyber-panel">
+            <div class="section-tag">§03 // HEALTH METRICS</div>
+            <h2 class="section-heading">Body Mass Index (BMI) Engine</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Computes Body Mass Index and ideal physical category.
+            </p>
+
+            <div class="app-grid">
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">AGE</label>
+                    <input type="number" id="bmiAge" class="app-input" value="17">
+                </div>
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">HEIGHT (CM)</label>
+                    <input type="number" id="bmiHeight" class="app-input" placeholder="175">
+                </div>
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">WEIGHT (KG)</label>
+                    <input type="number" id="bmiWeight" class="app-input" placeholder="65">
+                </div>
+            </div>
+
+            <button class="btn-maroon" onclick="calculateBMI()">CALCULATE BMI</button>
+
+            <div id="bmiResult" class="output-box" style="display:none; text-align:center;">
+                <div style="color:var(--text-muted); font-size:0.8rem;">COMPUTED BMI</div>
+                <div id="bmiScore" style="font-size:2rem; font-weight:800; color:var(--maroon-main);">--</div>
+                <div id="bmiBadge" style="color:var(--maroon-main); font-weight:700;">--</div>
+            </div>
+        </section>
+
+        <!-- §04 SEPARATED: QUICK MATH CALCULATOR -->
+        <section class="cyber-panel">
+            <div class="section-tag">§04 // MATHEMATICS</div>
+            <h2 class="section-heading">Quick Math Calculator</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Fast arithmetic tool for instant calculations.
+            </p>
+
+            <div class="calc-box">
+                <input type="text" id="calcDisplay" class="calc-disp" readonly value="0">
+                <div class="calc-grid">
+                    <button class="btn-calc" onclick="calcClear()">C</button>
+                    <button class="btn-calc" onclick="calcAppend('/')">/</button>
+                    <button class="btn-calc" onclick="calcAppend('*')">*</button>
+                    <button class="btn-calc" onclick="calcAppend('-')">-</button>
+                    <button class="btn-calc" onclick="calcAppend('7')">7</button>
+                    <button class="btn-calc" onclick="calcAppend('8')">8</button>
+                    <button class="btn-calc" onclick="calcAppend('9')">9</button>
+                    <button class="btn-calc" onclick="calcAppend('+')">+</button>
+                    <button class="btn-calc" onclick="calcAppend('4')">4</button>
+                    <button class="btn-calc" onclick="calcAppend('5')">5</button>
+                    <button class="btn-calc" onclick="calcAppend('6')">6</button>
+                    <button class="btn-calc" style="grid-row: span 2; height:100%; background:var(--maroon-main); color:var(--bg-cream);" onclick="calcCompute()">=</button>
+                    <button class="btn-calc" onclick="calcAppend('1')">1</button>
+                    <button class="btn-calc" onclick="calcAppend('2')">2</button>
+                    <button class="btn-calc" onclick="calcAppend('3')">3</button>
+                    <button class="btn-calc" style="grid-column: span 2;" onclick="calcAppend('0')">0</button>
+                    <button class="btn-calc" onclick="calcAppend('.')">.</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- §05 LIVE CALENDAR & DATE UTILITY -->
+        <section class="cyber-panel">
+            <div class="section-tag">§05 // TIMEKEEPER</div>
+            <h2 class="section-heading">Live Month Calendar</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;" id="calMonthTitle">
+                Loading calendar...
+            </p>
+
+            <div class="calendar-grid" id="calendarGrid">
+                <div class="cal-head">SUN</div>
+                <div class="cal-head">MON</div>
+                <div class="cal-head">TUE</div>
+                <div class="cal-head">WED</div>
+                <div class="cal-head">THU</div>
+                <div class="cal-head">FRI</div>
+                <div class="cal-head">SAT</div>
+            </div>
+        </section>
+
+        <!-- §06 LIVE CAMERA SPACE -->
+        <section class="cyber-panel">
+            <div class="section-tag">§06 // VISION UTILITY</div>
+            <h2 class="section-heading">Web Video Camera Space</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Activate your camera feed and capture instant web snapshots directly in your browser.
+            </p>
+
+            <div class="cam-wrapper">
+                <video id="webcam" autoplay playsinline></video>
+                <div style="display:flex; gap:10px;">
+                    <button class="btn-maroon" onclick="startCamera()">START CAMERA</button>
+                    <button class="btn-maroon" style="background:var(--maroon-light);" onclick="takeSnapshot()">TAKE SNAPSHOT</button>
+                </div>
+                <canvas id="snapshotCanvas" style="display:none;"></canvas>
+            </div>
+        </section>
+
+        <!-- §07 LIVE DICTIONARY -->
+        <section class="cyber-panel">
+            <div class="section-tag">§07 // LANGUAGE UTILITY</div>
+            <h2 class="section-heading">Live Dictionary</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Search real-time definitions, phonetics, and usage examples.
+            </p>
+
+            <div style="display: flex; gap: 10px; margin-top: 14px;">
+                <input type="text" id="dictInput" class="app-input" placeholder="Enter word (e.g., design, algorithm, velocity)" onkeydown="if(event.key === 'Enter') lookupWord()">
+                <button class="btn-maroon" style="margin-top:0;" onclick="lookupWord()">LOOKUP</button>
+            </div>
+
+            <div id="dictOutput" class="output-box" style="display:none;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3 id="dictWord" style="font-size:1.4rem; color:var(--maroon-main); text-transform:uppercase;">--</h3>
+                    <span id="dictPhonetic" style="color:var(--text-muted); font-family:var(--font-mono);"></span>
+                </div>
+                <div id="dictMeanings" style="margin-top:10px; color:var(--text-dark);"></div>
+            </div>
+        </section>
+
+        <!-- §08 DELHI NAVIGATOR & ROUTE PLANNER -->
+        <section class="cyber-panel">
+            <div class="section-tag">§08 // ROUTE ENGINE</div>
+            <h2 class="section-heading">Delhi Navigator & Transit Planner</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Plan optimal transit routes across Delhi, including Metro interchange guidance and direct Google Maps navigation links.
+            </p>
+
+            <div class="app-grid">
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">START LOCATION</label>
+                    <input type="text" id="navStart" class="app-input" value="Arora Garments, Govindpuri, Delhi">
+                </div>
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">DESTINATION LOCATION</label>
+                    <input type="text" id="navEnd" class="app-input" value="DBRA SOSE, Sarojini Nagar, Delhi">
+                </div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+                <button class="btn-maroon" onclick="calculateRoute()">
+                    <i class="fa-solid fa-route"></i> COMPUTE ROUTE
+                </button>
+                <a id="gmapsLink" href="https://www.google.com/maps/dir/?api=1&origin=Arora+Garments+Govindpuri+Delhi&destination=DBRA+SOSE+Sarojini+Nagar+Delhi" target="_blank" class="btn-maroon" style="background:var(--maroon-light);">
+                    <i class="fa-solid fa-map-location-dot"></i> OPEN IN GOOGLE MAPS
+                </a>
+            </div>
+
+            <div id="routeOutput" class="output-box" style="display:none;">
+                <div style="color:var(--maroon-main); font-weight:700; margin-bottom:12px;">> OPTIMAL ROUTE SPECIFICATION</div>
+                
+                <div class="metric-row" style="margin-bottom:16px;">
+                    <div class="metric-cell">
+                        <div style="font-size:0.75rem; color:var(--text-muted);">EST. TIME</div>
+                        <div class="metric-val" id="navTime">~32 Mins</div>
+                    </div>
+                    <div class="metric-cell">
+                        <div style="font-size:0.75rem; color:var(--text-muted);">APPROX DISTANCE</div>
+                        <div class="metric-val" id="navDist">~11.5 km</div>
+                    </div>
+                    <div class="metric-cell">
+                        <div style="font-size:0.75rem; color:var(--text-muted);">RECOMMENDED MODE</div>
+                        <div class="metric-val" id="navMode" style="font-size:0.9rem;">Violet Line -> Pink Line</div>
+                    </div>
+                </div>
+
+                <div id="routeSteps"></div>
+            </div>
+        </section>
+
+        <!-- §09 CLASS 10 MATHEMATICS QUESTION GENERATOR -->
+        <section class="cyber-panel">
+            <div class="section-tag">§09 // NCERT & PYQ ENGINE</div>
+            <h2 class="section-heading">Class 10 Mathematics Practice Engine</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Generate 5 curated questions based on official NCERT syllabus patterns and CBSE Board Previous Years' Questions (PYQs).
+            </p>
+
+            <div class="app-grid">
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">CHAPTER</label>
+                    <select id="mathChapter" class="app-input" onchange="updateExercises()">
+                        <option value="ch1">Ch 1: Real Numbers</option>
+                        <option value="ch2">Ch 2: Polynomials</option>
+                        <option value="ch3">Ch 3: Pair of Linear Equations</option>
+                        <option value="ch4">Ch 4: Quadratic Equations</option>
+                        <option value="ch5">Ch 5: Arithmetic Progressions</option>
+                        <option value="ch6">Ch 6: Triangles</option>
+                        <option value="ch7">Ch 7: Coordinate Geometry</option>
+                        <option value="ch8">Ch 8: Intro to Trigonometry</option>
+                        <option value="ch9">Ch 9: Some Applications of Trigonometry</option>
+                        <option value="ch10">Ch 10: Circles</option>
+                        <option value="ch11">Ch 11: Areas Related to Circles</option>
+                        <option value="ch12">Ch 12: Surface Areas & Volumes</option>
+                        <option value="ch13">Ch 13: Statistics</option>
+                        <option value="ch14">Ch 14: Probability</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">EXERCISE</label>
+                    <select id="mathExercise" class="app-input">
+                        <!-- Populated dynamically via JS -->
+                    </select>
+                </div>
+                <div>
+                    <label style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--maroon-main); font-weight: 700;">DIFFICULTY / QUESTION TYPE</label>
+                    <select id="mathType" class="app-input">
+                        <option value="mcq">MCQ (1 Marker)</option>
+                        <option value="2mark">Short Answer (2 Marker)</option>
+                        <option value="3mark">Short Answer (3 Marker)</option>
+                        <option value="5mark">Long Answer (5 Marker / PYQ)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn-maroon" onclick="generateMathQuestions()">
+                <i class="fa-solid fa-calculator"></i> GENERATE 5 QUESTIONS
+            </button>
+
+            <div id="mathQuestionsOutput" style="margin-top: 20px; display: none;"></div>
+
+            <button id="btnNextSet" class="btn-maroon" style="display: none; background: var(--maroon-light); width: 100%; justify-content: center;" onclick="generateMathQuestions()">
+                <i class="fa-solid fa-rotate"></i> GENERATE NEXT 5 QUESTIONS
+            </button>
+        </section>
+
+        <!-- §10 ABOUT ARTISAN -->
+        <section class="cyber-panel">
+            <div class="section-tag">§10 // ABOUT ARTISAN</div>
+            <h2 class="section-heading">Adnan Akhtar Laskar</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
+                I am a STEM student based in Delhi with a passion for digital creativity, visual design, and web app engineering. I specialize in building intuitive user interfaces, visual identity design, and color grading for digital media.
+            </p>
+
+            <div style="margin-bottom:20px;">
+                <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--maroon-main); margin-bottom:8px; font-weight: 700;">SPECIALIZATIONS & CORE SKILLS</div>
+                <span class="badge">STEM Studies</span>
+                <span class="badge">Graphic Design</span>
+                <span class="badge">UI/UX Design</span>
+                <span class="badge">Color Grading</span>
+                <span class="badge">HTML5 & Web Development</span>
+            </div>
+
+            <div style="margin-bottom:20px;">
+                <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--maroon-main); margin-bottom:8px; font-weight: 700;">LANGUAGES</div>
+                <div style="font-family:var(--font-mono); font-size:0.9rem;">
+                    <div>> ENGLISH — Fluent</div>
+                    <div>> HINDI — Native / Fluent</div>
+                    <div>> GERMAN — Conversational</div>
+                </div>
+            </div>
+
+            <div>
+                <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--maroon-main); margin-bottom:8px; font-weight: 700;">VERIFIED HANDLES & CONTACT</div>
+                <div style="font-family:var(--font-mono); font-size:0.88rem; display:grid; gap:6px;">
+                    <div>&bull; <strong>GitHub:</strong> <a href="https://github.com/really4adnan" target="_blank" style="color:var(--maroon-main);">github.com/really4adnan</a></div>
+                    <div>&bull; <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/adnan-a-laskar-510661426/" target="_blank" style="color:var(--maroon-main);">linkedin.com/in/adnan-a-laskar-510661426</a></div>
+                    <div>&bull; <strong>Instagram:</strong> <a href="https://instagram.com/wdym.adn4n/" target="_blank" style="color:var(--maroon-main);">instagram.com/wdym.adn4n</a></div>
+                    <div>&bull; <strong>Email:</strong> <a href="mailto:info.adnanakhtar001@gmail.com" style="color:var(--maroon-main);">info.adnanakhtar001@gmail.com</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>DESIGNED & DEVELOPED BY ADNAN AKHTAR LASKAR &bull; LIVE ON <a href="https://madebyadnan.xyz">MADEBYADNAN.XYZ</a></p>
+        </footer>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- Live Clock ---
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('liveClock').innerText = now.toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour12: false }) + ' IST';
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // --- Counters ---
+        function incrementCounter(id) {
+            let count = parseInt(localStorage.getItem(id) || "0") + 1;
+            localStorage.setItem(id, count);
+            document.getElementById(id).innerText = count;
+        }
+        function loadCounters() {
+            document.getElementById('likeCount').innerText = localStorage.getItem('likeCount') || "0";
+            document.getElementById('coffeeCount').innerText = localStorage.getItem('coffeeCount') || "0";
+        }
+
+        // --- Calendar Logic ---
+        function renderCalendar() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth();
+            const today = now.getDate();
+
+            const monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+            document.getElementById("calMonthTitle").innerText = `${monthNames[month]} ${year} // REAL-TIME CALENDAR VIEW`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            const grid = document.getElementById("calendarGrid");
+
+            while (grid.children.length > 7) {
+                grid.removeChild(grid.lastChild);
+            }
+
+            for (let i = 0; i < firstDay; i++) {
+                const emptyCell = document.createElement("div");
+                emptyCell.className = "cal-day empty";
+                grid.appendChild(emptyCell);
+            }
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const dayCell = document.createElement("div");
+                dayCell.className = "cal-day" + (d === today ? " today" : "");
+                dayCell.innerText = d;
+                grid.appendChild(dayCell);
+            }
+        }
+
+        // --- Camera Logic ---
+        async function startCamera() {
+            try {
+                const video = document.getElementById('webcam');
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (err) {
+                alert("Camera access denied or device unavailable.");
+            }
+        }
+
+        function takeSnapshot() {
+            const video = document.getElementById('webcam');
+            const canvas = document.getElementById('snapshotCanvas');
+            if (!video.srcObject) return alert("Please start the camera first.");
+
+            canvas.width = video.videoWidth || 640;
+            canvas.height = video.videoHeight || 480;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.style.display = 'block';
+        }
+
+        // --- Dictionary Logic ---
+        async function lookupWord() {
+            const word = document.getElementById("dictInput").value.trim();
+            if (!word) return alert("Enter a word to lookup.");
+
+            try {
+                const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+                if (!res.ok) throw new Error("Word not found");
+                const data = await res.json();
+
+                const entry = data[0];
+                document.getElementById("dictWord").innerText = entry.word;
+                document.getElementById("dictPhonetic").innerText = entry.phonetic || (entry.phonetics[0] ? entry.phonetics[0].text : "");
+
+                let meaningsHTML = "";
+                entry.meanings.forEach(m => {
+                    meaningsHTML += `<div style="margin-bottom:8px;">
+                        <strong style="color:var(--maroon-main); text-transform:uppercase;">[${m.partOfSpeech}]</strong>
+                        <div>${m.definitions[0].definition}</div>
+                        ${m.definitions[0].example ? `<div style="color:var(--text-muted); font-size:0.85rem; font-style:italic;">"${m.definitions[0].example}"</div>` : ''}
+                    </div>`;
+                });
+
+                document.getElementById("dictMeanings").innerHTML = meaningsHTML;
+                document.getElementById("dictOutput").style.display = "block";
+
+            } catch (err) {
+                alert("Definition not found for this word.");
+            }
+        }
+
+        // --- Delhi Navigator Logic ---
+        function calculateRoute() {
+            const start = document.getElementById("navStart").value.trim();
+            const end = document.getElementById("navEnd").value.trim();
+
+            if (!start || !end) return alert("Please enter start and destination locations.");
+
+            const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(start)}&destination=${encodeURIComponent(end)}`;
+            document.getElementById("gmapsLink").href = mapsUrl;
+
+            let stepsHTML = "";
+            
+            if (start.toLowerCase().includes("govindpuri") && end.toLowerCase().includes("sarojini")) {
+                document.getElementById("navTime").innerText = "~32 Mins";
+                document.getElementById("navDist").innerText = "~11.5 km";
+                document.getElementById("navMode").innerText = "Violet Line -> Pink Line";
+
+                stepsHTML = `
+                    <div class="route-step"><strong>Step 1:</strong> Take an E-Rickshaw / Walk from <em>Arora Garments</em> to <strong>Govindpuri Metro Station</strong> (~5 mins / 700m).</div>
+                    <div class="route-step"><strong>Step 2:</strong> Board the <strong>Violet Line Metro</strong> towards Kashmere Gate.</div>
+                    <div class="route-step"><strong>Step 3:</strong> Interchange at <strong>Lajpat Nagar Metro Station</strong> to the <strong>Pink Line</strong> towards Majlis Park.</div>
+                    <div class="route-step"><strong>Step 4:</strong> De-board at <strong>Sarojini Nagar Metro Station</strong> (~18 mins train time).</div>
+                    <div class="route-step"><strong>Step 5:</strong> Exit Gate 1 and walk 400m to <strong>DBRA SOSE, Sarojini Nagar</strong>.</div>
+                `;
+            } else {
+                document.getElementById("navTime").innerText = "~35-45 Mins";
+                document.getElementById("navDist").innerText = "Calculated via GPS";
+                document.getElementById("navMode").innerText = "Delhi Metro / Direct Road";
+
+                stepsHTML = `
+                    <div class="route-step"><strong>Step 1:</strong> Proceed from <em>${start}</em> to nearest Delhi Metro station.</div>
+                    <div class="route-step"><strong>Step 2:</strong> Board train toward destination interchange line.</div>
+                    <div class="route-step"><strong>Step 3:</strong> Arrive at target station near <em>${end}</em>.</div>
+                    <div class="route-step"><strong>Step 4:</strong> Click "Open in Google Maps" above for live GPS turn-by-turn navigation.</div>
+                `;
+            }
+
+            document.getElementById("routeSteps").innerHTML = stepsHTML;
+            document.getElementById("routeOutput").style.display = "block";
+        }
+
+        // --- Class 10 Maths Generator Logic ---
+        const exerciseData = {
+            "ch1": ["Ex 1.1: Prime Factorization & HCF/LCM", "Ex 1.2: Proof of Irrationality"],
+            "ch2": ["Ex 2.1: Zeros from Graphs", "Ex 2.2: Relationship between Zeros and Coefficients"],
+            "ch3": ["Ex 3.1: Graphical Solution of Linear Equations", "Ex 3.2: Substitution & Elimination Methods"],
+            "ch4": ["Ex 4.1: Standard Form & Factorization", "Ex 4.2: Quadratic Formula & Nature of Roots"],
+            "ch5": ["Ex 5.1: Intro & Common Difference", "Ex 5.2: Finding nth term (an)", "Ex 5.3: Sum of First n terms (Sn)"],
+            "ch6": ["Ex 6.1: Basic Proportionality Theorem (BPT)", "Ex 6.2: Similarity Criteria of Triangles"],
+            "ch7": ["Ex 7.1: Distance Formula", "Ex 7.2: Section Formula"],
+            "ch8": ["Ex 8.1: Trigonometric Ratios", "Ex 8.2: Specific Angles (30°, 45°, 60°)", "Ex 8.3: Trigonometric Identities"],
+            "ch9": ["Ex 9.1: Heights and Distances (Angles of Elevation/Depression)"],
+            "ch10": ["Ex 10.1: Tangent Properties", "Ex 10.2: Lengths of Tangents from External Point"],
+            "ch11": ["Ex 11.1: Areas of Sectors & Segments of Circle"],
+            "ch12": ["Ex 12.1: Surface Area of Combined Solids", "Ex 12.2: Volume of Combined Solids"],
+            "ch13": ["Ex 13.1: Mean of Grouped Data", "Ex 13.2: Mode of Grouped Data", "Ex 13.3: Median of Grouped Data"],
+            "ch14": ["Ex 14.1: Theoretical Probability of Events"]
+        };
+
+        const questionBank = [
+            { q: "[CBSE 2023 PYQ] If the HCF of 65 and 117 is expressible in the form 65m - 117, find the value of m.", a: "Given HCF(65, 117) = 13.\n65m - 117 = 13 => 65m = 130 => m = 2." },
+            { q: "[CBSE 2022 PYQ] Find the quadratic polynomial whose zeros are (3 + √2) and (3 - √2).", a: "Sum = (3 + √2) + (3 - √2) = 6\nProduct = 9 - 2 = 7\nPolynomial = x² - 6x + 7." },
+            { q: "[NCERT Core] Prove that √5 is an irrational number.", a: "Assume √5 = a/b (co-primes). 5 = a²/b² => a² = 5b² (5|a). Let a=5c => b² = 5c² (5|b). Contradiction to co-prime assumption. Thus √5 is irrational." },
+            { q: "[CBSE 2020 PYQ] Find the 11th term from the last term of the AP: 10, 7, 4, ..., -62.", a: "Reverse AP: -62, -59, -56, ..., 10\nHere a = -62, d = 3, n = 11\nAn = -62 + (10)(3) = -32." },
+            { q: "[CBSE Board] If tan(A + B) = √3 and tan(A - B) = 1/√3 (0° < A + B ≤ 90°), find A and B.", a: "A + B = 60° and A - B = 30°.\nAdding gives 2A = 90° => A = 45°.\nSubstituting gives B = 15°." },
+            { q: "[NCERT] Find the roots of the quadratic equation 2x² - x + 1/8 = 0 by factorization.", a: "Multiply by 8: 16x² - 8x + 1 = 0 => (4x - 1)² = 0 => x = 1/4, 1/4." },
+            { q: "[CBSE 2021 PYQ] Determine the ratio in which the line segment joining A(1, -5) and B(-4, 5) is divided by the x-axis.", a: "Let ratio be k:1. Point on x-axis has y = 0.\n(5k - 5)/(k + 1) = 0 => 5k = 5 => k = 1. Ratio is 1:1." },
+            { q: "[CBSE 2024 PYQ] Solve the system of equations by elimination: 2x + 3y = 11 and 2x - 4y = -24.", a: "Subtracting: 7y = 35 => y = 5.\nSubstitute y=5 in 2x + 15 = 11 => 2x = -4 => x = -2." },
+            { q: "[NCERT] A ladder 10m long reaches a window 8m above the ground. Find the distance of the foot of the ladder from the base of the wall.", a: "By Pythagoras theorem: Hyp² = Base² + Perp²\n10² = Base² + 8² => Base² = 100 - 64 = 36 => Distance = 6m." },
+            { q: "[CBSE Board] Prove that the lengths of tangents drawn from an external point to a circle are equal.", a: "Construct circle with center O, external point P, tangent points A & B.\nIn ΔOAP and ΔOBP: OA = OB (radii), OP = OP (common), ∠OAP = ∠OBP = 90°.\nBy RHS congruence, ΔOAP ≅ ΔOBP => PA = PB." }
+        ];
+
+        function updateExercises() {
+            const ch = document.getElementById("mathChapter").value;
+            const exSelect = document.getElementById("mathExercise");
+            exSelect.innerHTML = exerciseData[ch].map(e => `<option value="${e}">${e}</option>`).join("");
+        }
+
+        let setCounter = 0;
+
+        function generateMathQuestions() {
+            const chText = document.getElementById("mathChapter").options[document.getElementById("mathChapter").selectedIndex].text;
+            const exText = document.getElementById("mathExercise").value;
+            const qType = document.getElementById("mathType").value;
+
+            // Shuffle and pick 5
+            const shuffled = [...questionBank].sort(() => 0.5 - Math.random()).slice(0, 5);
+
+            setCounter++;
+            const container = document.getElementById("mathQuestionsOutput");
+            let html = `<div style="color:var(--maroon-main); font-weight:700; font-family:var(--font-mono); margin-bottom:12px;">> GENERATED PRACTICE SET #${setCounter}: ${chText} (${exText})</div>`;
+
+            shuffled.forEach((item, idx) => {
+                html += `
+                    <div class="q-card">
+                        <div class="q-title">QUESTION 0${idx + 1} [${qType.toUpperCase()}]</div>
+                        <div class="q-text">${item.q}</div>
+                        <button class="btn-answer" onclick="toggleAnswer('ans${setCounter}_${idx}')">[+] SHOW ANSWER & STEP-BY-STEP SOLUTION</button>
+                        <div id="ans${setCounter}_${idx}" class="answer-box">
+                            <strong>SOLUTION / EXPLANATION:</strong><br>
+                            <span style="white-space: pre-line;">${item.a}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            container.style.display = "block";
+            document.getElementById("btnNextSet").style.display = "flex";
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === "block") ? "none" : "block";
+        }
+
+        // --- Student Profession Finder ---
+        function findProfession() {
+            const cls = document.getElementById("profClass").value;
+            const stream = document.getElementById("profStream").value;
+            const hobby = document.getElementById("profHobby").value;
+
+            let roles = [], skills = "", action = "";
+
+            if (stream === "pcm") {
+                if (hobby === "tech") { roles = ["AI/ML Engineer", "Full-Stack Dev"]; skills = "Python, Data Structures, Git, Modern Web Stack."; }
+                else if (hobby === "design") { roles = ["UI/UX Engineer", "Creative Technologist"]; skills = "Figma, HTML/CSS/JS, WebGL, Color Theory."; }
+                else { roles = ["Data Scientist", "Robotics Specialist"]; skills = "Applied Math, Statistics, System Architecture."; }
+            } else if (stream === "pcb") {
+                roles = (hobby === "tech") ? ["Bioinformatics Developer", "Health-Tech Specialist"] : ["Clinical Researcher", "Biomedical Specialist"];
+                skills = "Computational Biology, Genomics, Analytical Diagnostics.";
+            } else if (stream === "commerce") {
+                roles = ["FinTech Analyst", "Financial Data Strategist"];
+                skills = "Financial Modeling, SQL, Python, Risk Analytics.";
+            } else {
+                roles = ["Product Experience Designer", "Creative Director"];
+                skills = "Visual Identity, User Psychology, Interaction Design.";
+            }
+
+            action = (cls === "9-10") ? "Focus on core STEM fundamentals and small side projects." :
+                     (cls === "11-12") ? "Build a dedicated GitHub/portfolio repository and explore university specs." : "Seek internships and contribute to open-source software.";
+
+            document.getElementById("profTags").innerHTML = roles.map(r => `<span class="career-tag">${r}</span>`).join("");
+            document.getElementById("profSkills").innerText = skills;
+            document.getElementById("profAction").innerText = action;
+            document.getElementById("profResult").style.display = "block";
+        }
+
+        // --- Weather Advisor ---
+        async function fetchCityWeather() {
+            const city = document.getElementById("cityInput").value.trim();
+            if (!city) return alert("Enter city name.");
+
+            try {
+                const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=en&format=json`);
+                const geoData = await geoRes.json();
+                if (!geoData.results || geoData.results.length === 0) return alert("City not found.");
+
+                const { latitude, longitude } = geoData.results[0];
+                const weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m`);
+                const weatherData = await weatherRes.json();
+
+                const temp = weatherData.current.temperature_2m;
+                const humidity = weatherData.current.relative_humidity_2m;
+                const wind = weatherData.current.wind_speed_10m;
+
+                document.getElementById("valTemp").innerText = `${temp} °C`;
+                document.getElementById("valCondition").innerText = "Clear / Active";
+                document.getElementById("valHumidity").innerText = `${humidity} %`;
+                document.getElementById("valWind").innerText = `${wind} km/h`;
+
+                document.getElementById("recOutfit").innerText = (temp >= 30) ? "Breathable cottons, light shirt, sun protection." : "Mild/Cool: Wear a light hoodie or jacket.";
+                document.getElementById("recHydration").innerText = (temp >= 30) ? "Target: 3.5 - 4 Liters daily." : "Target: 2.5 - 3 Liters daily.";
+                document.getElementById("weatherDisplay").style.display = "block";
+            } catch (err) { alert("Weather service unavailable."); }
+        }
+
+        // --- BMI Engine ---
+        function calculateBMI() {
+            const h = parseFloat(document.getElementById("bmiHeight").value) / 100;
+            const w = parseFloat(document.getElementById("bmiWeight").value);
+            if (!h || !w) return alert("Enter height and weight.");
+
+            const bmi = (w / (h * h)).toFixed(1);
+            document.getElementById("bmiScore").innerText = bmi;
+            document.getElementById("bmiBadge").innerText = (bmi < 18.5) ? "UNDERWEIGHT" : (bmi < 25) ? "NORMAL WEIGHT" : "OVERWEIGHT";
+            document.getElementById("bmiResult").style.display = "block";
+        }
+
+        // --- Quick Calculator ---
+        function calcAppend(val) {
+            const d = document.getElementById("calcDisplay");
+            if (d.value === "0" && val !== ".") d.value = val;
+            else d.value += val;
+        }
+        function calcClear() { document.getElementById("calcDisplay").value = "0"; }
+        function calcCompute() {
+            try { document.getElementById("calcDisplay").value = eval(document.getElementById("calcDisplay").value); }
+            catch { document.getElementById("calcDisplay").value = "Error"; }
+        }
+
+        window.onload = function() {
+            loadCounters();
+            renderCalendar();
+            updateExercises();
+        };
+    </script>
+</body>
+</html>
